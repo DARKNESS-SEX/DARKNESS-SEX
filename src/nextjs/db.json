@@ -4,25 +4,28 @@
       "id": 1,
       "user_id": 1,
       "title": "アレする",
+      "description": "アレするよー",
       "start_date_time": "2022-10-01T10:00:00",
       "end_date_time": "2022-10-01T12:00:00",
-      "is-done": false
+      "is_done": false
     },
     {
       "id": 2,
       "user_id": 1,
       "title": "コレする",
+      "description": "コレするよー",
       "start_date_time": "2022-10-01T13:00:00",
-      "end_date-time": "2022-10-01T15:00:00",
-      "is-done": false
+      "end_date_time": "2022-10-01T15:00:00",
+      "is_done": false
     },
     {
       "id": 3,
       "user_id": 1,
       "title": "ソレする",
-      "start-date-time": "2022-10-01T16:00:00",
-      "end-date-time": "2022-10-01T18:00:00",
-      "is-done": false
+      "description": "ソレするよー",
+      "start_date_time": "2022-10-01T16:00:00",
+      "end_date_time": "2022-10-01T18:00:00",
+      "is_done": false
     }
   ],
   "users": [
@@ -32,3 +35,5 @@
     }
   ]
 }
+
+
