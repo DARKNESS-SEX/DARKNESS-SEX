@@ -36,8 +36,44 @@ const client = new OpenAI({
     apiKey: process.env["OPENAI_API_KEY"], // This is the default and can be omitted
 });
 
+async function buildPrompt() {
 
-async function callGpt() {
+    const filePath = path.join(__dirname, '../db.json');
+
+    try {
+        // ファイルの内容を読み込む
+        const data = await fs.readFile(filePath, 'utf8');
+        const jsonData = JSON.parse(data);
+
+        jsonData.settings
+
+        const prompt =  "\n" +
+        `年齢： ${jsonData.settings[0].age}\n` +
+        `性別：${jsonData.settings[0].sex}\n` +
+        `好きなもの：${jsonData.settings[0].like}\n` +
+        `趣味：${jsonData.settings[0].hobby}\n` +
+        `悩んでいること：${jsonData.settings[0].problem}\n` +
+        `夢・目指していること：${jsonData.settings[0].goal}\n`
+
+
+        console.log("prompt: " + prompt)
+
+        return prompt
+
+
+    } catch (error) {
+        console.error("Failed to update schedules:", error);
+        throw error;
+    }
+
+
+
+}
+
+
+async function callGpt(prompt) {
+
+
     return client.chat.completions.create({
         messages: [
             {
@@ -77,13 +113,7 @@ async function callGpt() {
                     "]"
             },
             {
-                role: "user", content: "\n" +
-                    "年齢：19歳\n" +
-                    "性別：男\n" +
-                    "好きなもの：スポーツ観戦\n" +
-                    "趣味：ゲーム\n" +
-                    "悩んでいること：運動不足\n" +
-                    "夢・目指していること：司法書士\n"
+                role: "user", content: prompt
             },
         ],
         model: "gpt-4o-2024-08-06",
@@ -162,8 +192,18 @@ async function saveSchedules(schedules) {
 
 }
 
-callGpt()
-    .then((response) =>
-        console.log(saveSchedules(Schedule.buildByString(response.choices[0].message.content))),
-    )
-    .catch(console.error);
+
+async function main() {
+ try {
+     const prompt = await buildPrompt();
+     const response = await callGpt(prompt);
+     const schedules = Schedule.buildByString(response.choices[0].message.content);
+     await saveSchedules(schedules);
+     console.log("Process completed successfully");
+ } catch (error) {
+     console.error("An error occurred:", error);
+ }
+}
+
+
+main()
