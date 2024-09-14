@@ -1,0 +1,23 @@
+{
+  "posts": [
+    {
+      "title": "lorem",
+      "score": 50,
+      "id": 1
+    },
+    {
+      "title": "testlorem",
+      "score": 80,
+      "id": 2
+    },
+    {
+      "title": "test2",
+      "score": 10,
+      "id": 3
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}
