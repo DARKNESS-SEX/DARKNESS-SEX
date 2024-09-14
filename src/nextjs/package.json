@@ -18,6 +18,7 @@
     "tailwindcss": "3.4.11",
     "postcss": "8.4.23",
     "autoprefixer": "10.4.14",
+    "axios": "1.7.7",
     "openai": "4.61.0"
   },
   "devDependencies": {
