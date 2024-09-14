@@ -14,6 +14,7 @@ export default function Home(props) {
         <title>LIFF Starter</title>
       </Head>
       <div className="home">
+        <h1 className="text-sky-500">hogehoge</h1>
         <h1 className="home__title">
           Welcome to <br />
           <a
