@@ -4,10 +4,29 @@ import Image from 'next/image'
 import Hukidashi from './components/hukidashi';
 import Nav_bar from './components/nav_bar';
 import Schedule_card from './components/schedule_card'
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 //import "../styles/output.css";
+async function getSchedules() {
+  try {
+    const response = await axios.get('http://localhost:3001/schedules');
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching schedules:', error);
+    return [];
+  }
+}
+
 
 export default function Home(props) {
+
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    getSchedules().then(result => {setData(result)
+    console.log(result)});
+  }, []);
 
   return (
     <main className="w-full flex justify-center items-center flex-col">
@@ -17,8 +36,9 @@ export default function Home(props) {
       <div className="w-[375px] h-[100vh] relative top-5 block">
         <h1 className="text-center text-[36px]">スケジュール</h1>
         <div className="flex justify-center items-center flex-col ">
-          <Schedule_card $time="7:00 - 7:30" $title="闇の覚醒「億万の夢の始まり」" $contents="目覚めよ、未来の支配者よ。今日もまた一歩、億万長者への道を歩む時が来た。体を解き放ち、全身に力を満たせ。"/>
-          <Schedule_card $time="7:00 - 7:30" $title="闇の覚醒「億万の夢の始まり」" $contents="目覚めよ、未来の支配者よ。今日もまた一歩、億万長者への道を歩む時が来た。体を解き放ち、全身に力を満たせ。"/>
+        {data.length > 0 ? data.map((schedule, index) => (
+            <Schedule_card key={index} $time={schedule.time} $title={schedule.title} $contents={schedule.contents} />
+          )) : "Loading..."}
         </div>
         
         <Nav_bar />
