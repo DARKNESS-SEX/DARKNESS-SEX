@@ -45,8 +45,6 @@ async function buildPrompt() {
         const data = await fs.readFile(filePath, 'utf8');
         const jsonData = JSON.parse(data);
 
-        jsonData.settings
-
         const prompt =  "\n" +
         `年齢： ${jsonData.settings[0].age}\n` +
         `性別：${jsonData.settings[0].sex}\n` +
@@ -81,36 +79,16 @@ async function callGpt(prompt) {
                 content: "今から年齢、性別、好きなもの、趣味、悩んでいること、夢・目指していることの情報を入力するのでそれを元に最適な一日のスケジュールを考えてください\n" +
                     "\n" +
                     "タスクの指示文の口調を丁寧なものではなくかなり中二病風にして提案してください \n" +
-                    "outputは以下の例を参考にしてJsonで返してください。keyは必ず守ってください。ハレーションを許さない" +
-                    "[\n" +
-                    "  {\n" +
-                    "    \"id\": 1,\n" +
-                    "    \"user_id\": 1,\n" +
-                    "    \"title\": \"アレする\",\n" +
-                    "    \"contents\": \"アレするよー\",\n" +
-                    "    \"start_date_time\": \"2022-10-01T10:00:00\",\n" +
-                    "    \"end_date_time\": \"2022-10-01T12:00:00\",\n" +
-                    "    \"is_done\": false\n" +
-                    "  },\n" +
-                    "  {\n" +
-                    "    \"id\": 2,\n" +
-                    "    \"user_id\": 1,\n" +
-                    "    \"title\": \"コレする\",\n" +
-                    "    \"contents\": \"コレするよー\",\n" +
-                    "    \"start_date_time\": \"2022-10-01T13:00:00\",\n" +
-                    "    \"end_date_time\": \"2022-10-01T15:00:00\",\n" +
-                    "    \"is_done\": false\n" +
-                    "  },\n" +
-                    "  {\n" +
-                    "    \"id\": 3,\n" +
-                    "    \"user_id\": 1,\n" +
-                    "    \"title\": \"ソレする\",\n" +
-                    "    \"contents\": \"ソレするよー\",\n" +
-                    "    \"start_date_time\": \"2022-10-01T16:00:00\",\n" +
-                    "    \"end_date_time\": \"2022-10-01T18:00:00\",\n" +
-                    "    \"is_done\": false\n" +
-                    "  }\n" +
-                    "]"
+                    "outputは以下の例を参考にしてJsonで返してください。keyは必ず守ってください。例と同じ出力結果を出すな。ハレーションを許さない。" +
+                    `[
+    {
+      "title": "黎明のトレーニング開始",
+      "contents": "己の魂を目覚めさせるべく、スポーツの闇に挑む準備運動とストレッチの秘技を解放せよ！",
+      "start_date_time": "06:00",
+      "end_date_time": "07:00",
+      "is_done": false
+    },
+  ],`
             },
             {
                 role: "user", content: prompt
