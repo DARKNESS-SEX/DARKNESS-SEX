@@ -3,7 +3,7 @@ import Button from "../components/button";
 import Eraberu from "../components/eraberu";
 import Nav_bar from "../components/nav_bar";
 import Image from "next/dist/client/image";
-import localImages from "../../public/dorara.png";
+import localImages from "../../public/dakudo.gif";
 import BgImg from "../../public/blu.png";
 
 export default function Home(props) {
