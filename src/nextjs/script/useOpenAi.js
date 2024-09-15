@@ -46,12 +46,12 @@ async function buildPrompt() {
         const jsonData = JSON.parse(data);
 
         const prompt =  "\n" +
-        `年齢： ${jsonData.settings[0].age}\n` +
-        `性別：${jsonData.settings[0].sex}\n` +
-        `好きなもの：${jsonData.settings[0].likes}\n` +
-        `趣味：${jsonData.settings[0].hobbies}\n` +
-        `悩んでいること：${jsonData.settings[0].concerns}\n` +
-        `夢・目指していること：${jsonData.settings[0].dreams}\n`
+        `年齢： ${jsonData.settings.age}\n` +
+        `性別：${jsonData.settings.sex}\n` +
+        `好きなもの：${jsonData.settings.likes}\n` +
+        `趣味：${jsonData.settings.hobbies}\n` +
+        `悩んでいること：${jsonData.settings.concerns}\n` +
+        `夢・目指していること：${jsonData.settings.dreams}\n`
 
 
         console.log("prompt: " + prompt)
