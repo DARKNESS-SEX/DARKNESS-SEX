@@ -37,10 +37,10 @@
     }
   ],
   "settings": {
-    "age": "aaa",
-    "likes": "qqq",
-    "hobbies": "www",
-    "concerns": "eeee",
-    "dreams": "rrrr"
+    "age": "",
+    "likes": "",
+    "hobbies": "",
+    "concerns": "",
+    "dreams": ""
   }
 }
