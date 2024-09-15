@@ -2,6 +2,7 @@ import Iremono from ".././components/iremono";
 import Button from "../components/button";
 import Eraberu from "../components/eraberu";
 import { useState } from "react";
+import axios from "axios";
 
 export default function Home(props) {
     const [age, setAge] = useState("");
@@ -9,6 +10,7 @@ export default function Home(props) {
     const [hobbies, setHobbies] = useState("");
     const [concerns, setConcerns] = useState("");
     const [dreams, setDreams] = useState("");
+    const apiUrl ="http://localhost:3001/settings"
 
     const handleSubmit = () => {
         console.log({
@@ -18,6 +20,25 @@ export default function Home(props) {
             concerns,
             dreams
         });
+        const dataToSend = {
+            age:age,
+            likes:likes,
+            hobbies:hobbies,
+            concerns:concerns,
+            dreams:dreams,
+
+        }
+        axios.put(apiUrl, dataToSend, {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          })
+            .then((response) => {
+              console.log('送信成功:', response.data);
+            })
+            .catch((error) => {
+              console.error('送信エラー:', error);
+            });
     };
     return (
         <div className="my-6">

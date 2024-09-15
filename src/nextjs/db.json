@@ -36,14 +36,11 @@
       "is_done": false
     }
   ],
-  "settings": [
-    {
-      "age": 18,
-      "sex": "男",
-      "like": "スポーツ",
-      "hobby": "読書",
-      "problem": "運動不足",
-      "goal": "司法書士"
-    }
-  ]
+  "settings": {
+    "age": "aaa",
+    "likes": "qqq",
+    "hobbies": "www",
+    "concerns": "eeee",
+    "dreams": "rrrr"
+  }
 }
