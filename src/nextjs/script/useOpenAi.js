@@ -48,10 +48,10 @@ async function buildPrompt() {
         const prompt =  "\n" +
         `年齢： ${jsonData.settings[0].age}\n` +
         `性別：${jsonData.settings[0].sex}\n` +
-        `好きなもの：${jsonData.settings[0].like}\n` +
-        `趣味：${jsonData.settings[0].hobby}\n` +
-        `悩んでいること：${jsonData.settings[0].problem}\n` +
-        `夢・目指していること：${jsonData.settings[0].goal}\n`
+        `好きなもの：${jsonData.settings[0].likes}\n` +
+        `趣味：${jsonData.settings[0].hobbies}\n` +
+        `悩んでいること：${jsonData.settings[0].concerns}\n` +
+        `夢・目指していること：${jsonData.settings[0].dreams}\n`
 
 
         console.log("prompt: " + prompt)
@@ -63,8 +63,6 @@ async function buildPrompt() {
         console.error("Failed to update schedules:", error);
         throw error;
     }
-
-
 
 }
 
@@ -78,12 +76,12 @@ async function callGpt(prompt) {
                 role: "system",
                 content: "今から年齢、性別、好きなもの、趣味、悩んでいること、夢・目指していることの情報を入力するのでそれを元に最適な一日のスケジュールを考えてください\n" +
                     "\n" +
-                    "タスクの指示文の口調を丁寧なものではなくかなり中二病風にして提案してください \n" +
+                    "タスクの指示文の口調を丁寧なものではなくかなり誇張した中二病風の固有名詞を用い、ライトノベルのようなルビを交えて提案してください \n" +
                     "outputは以下の例を参考にしてJsonで返してください。keyは必ず守ってください。例と同じ出力結果を出すな。ハレーションを許さない。" +
                     `[
     {
-      "title": "黎明のトレーニング開始",
-      "contents": "己の魂を目覚めさせるべく、スポーツの闇に挑む準備運動とストレッチの秘技を解放せよ！",
+      "title": "闇の覚醒「億万の夢の始まり」,
+      "contents": string,
       "start_date_time": "06:00",
       "end_date_time": "07:00",
       "is_done": false
@@ -94,7 +92,7 @@ async function callGpt(prompt) {
                 role: "user", content: prompt
             },
         ],
-        model: "gpt-4o-2024-08-06",
+        model: "gpt-4o-mini",
         response_format: {
             type: "json_schema",
             json_schema: {
