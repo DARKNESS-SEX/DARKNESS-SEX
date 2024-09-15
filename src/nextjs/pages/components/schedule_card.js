@@ -1,7 +1,7 @@
-export default function schedule_card({$time,$title,$contents}) {
+export default function schedule_card({$time,$title,$contents,$onClick}) {
 
     return ( 
-        <div className="w-11/12 bg-[#FFECE7] flex justify-center items-center rounded-3xl mb-5">
+        <div className="w-11/12 bg-[#FFECE7] flex justify-center items-center rounded-3xl mb-5" onClick={$onClick}>
             <div className="w-11/12 ">
                 <article className="flex justify-center items-center flex-col p-2">
                     <div className="flex justify-center items-center flex-col">
