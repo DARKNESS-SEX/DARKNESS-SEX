@@ -1,7 +1,7 @@
 import Head from "next/head";
 import packageJson from "../package.json";
 import Image from 'next/image'
-import Hukidashi from './components/hukidashi';
+import Modal from './components/modal';
 import Nav_bar from './components/nav_bar';
 import Schedule_card from './components/schedule_card'
 import { useState, useEffect } from "react";
@@ -33,9 +33,10 @@ export default function Home(props) {
       <Head>
         <title>LIFF Starter</title>
       </Head>
+      <Modal className="" />
       <div className="w-[375px] h-[100vh] relative top-5 block">
         <h1 className="text-center text-[36px]">スケジュール</h1>
-        <div className="flex justify-center items-center flex-col">
+        <div className="flex justify-center items-center flex-col pb-[120px]">
         {data.length > 0 ? data.map((schedule, index) => (
             <Schedule_card key={index} $time={`${schedule.start_date_time}~${schedule.end_date_time}`} $title={schedule.title} $contents={schedule.contents} />
           )) : "Loading..."}

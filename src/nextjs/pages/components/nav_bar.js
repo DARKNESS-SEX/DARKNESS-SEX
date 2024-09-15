@@ -1,6 +1,6 @@
 export default function nav_bar(props) {
 return(
-    <footer className="w-[375px] h-[120px] flex justify-center items-center bg-[#E5BABA] fixed bottom-0 z-50">
+    <footer className="w-[375px] h-[120px] flex justify-center items-center bg-[#E5BABA] fixed bottom-0 z-10">
         <div className="w-4/5 flex justify-between">
             <div className="border-4 w-[80px] h-[80px] flex justify-center items-center border-[#B67676] rounded-2xl bg-[#ffffff]">
                 <svg className="" width="50" height="56" viewBox="0 0 50 56" fill="none" xmlns="http://www.w3.org/2000/svg">
