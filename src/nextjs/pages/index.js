@@ -35,9 +35,9 @@ export default function Home(props) {
       </Head>
       <div className="w-[375px] h-[100vh] relative top-5 block">
         <h1 className="text-center text-[36px]">スケジュール</h1>
-        <div className="flex justify-center items-center flex-col ">
+        <div className="flex justify-center items-center flex-col">
         {data.length > 0 ? data.map((schedule, index) => (
-            <Schedule_card key={index} $time={schedule.time} $title={schedule.title} $contents={schedule.contents} />
+            <Schedule_card key={index} $time={`${schedule.start_date_time}~${schedule.end_date_time}`} $title={schedule.title} $contents={schedule.contents} />
           )) : "Loading..."}
         </div>
         
